@@ -43,15 +43,16 @@ main {
 	margin: 50px;
 }
 h1 {
-	padding: 15px;
+	padding-top: 30px;
 	font-size: 68px;
 	font-family: 'Arvo', serif;
 }
 h2 {
-	font-size: 55px;
+	font-size: 35px;
 	font-family: 'Arvo', serif;
 }
 p {
+	font-size: 18px;
 	font-family: 'Lato', sans-serif;
 }
 main img {

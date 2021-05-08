@@ -5,53 +5,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <style>
-      body {
-        margin: 0;
-      }
-      header {
-        background-color: yellow;
-        width: 100%;
-        padding-top: 56.25%; /* 16:9 Aspect Ratio */
-        position: relative; /* If you want text inside of it */
-      }
-      header h1 {
-        position: absolute;
-        z-index: 2;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 88px;
-        font-family: 'Arvo', serif;
-        color: white;
-      }
-      header img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        filter: brightness(50%);
-      }
-      main {
-        margin: 15px;
-      }
-      h2 {
-        font-size: 55px;
-        font-family: 'Arvo', serif;
-      }
-      p {
-        font-family: 'Lato', sans-serif;
-      }
-      main img {
-        height: 200px;
-      }
-    </style>
+    <link href="index.css" rel="stylesheet">
   </head>
   <body>
     <header>
       <nav>
-        
+        <div class="navdiv"><a href="index.html">Home</a></div>
+        <!--
+        <div class="navdiv"><a href="faq.html">FAQ</a></div>
+        -->
       </nav>
       <h1>qucchia</h1>
       <img src="silhouettes.png" alt="">
@@ -64,6 +26,8 @@
         My human counterpart is British, living in Spain, 15 years old.  
       </p>
       <img src="monkey_programming.jpg" alt="Monkey programming">
+      <h2>Projects</h2>
+      <p>You're seeing my current project right now: a website. This will be a helpful exercise to enforce what I've learned in HTML, CSS and JS.</p>
     </main>
   </body>
 </html>

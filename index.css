@@ -1,5 +1,7 @@
 body {
 	margin: 0;
+	font-family: 'Lato', sans-serif;
+	font-size: 18px;
 }
 header {
 	width: 100%;
@@ -26,7 +28,6 @@ nav a {
 	display: block;
 	padding: 8px;
 	background-color: yellow;
-	font-family: 'Lato', sans-serif;
 	color: black;
 	text-align: center;
 	padding: 14px 16px;
@@ -50,10 +51,6 @@ h1 {
 h2 {
 	font-size: 35px;
 	font-family: 'Arvo', serif;
-}
-p {
-	font-size: 18px;
-	font-family: 'Lato', sans-serif;
 }
 main img {
 	height: 200px;

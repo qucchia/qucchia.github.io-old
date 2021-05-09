@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scratch Project Tools - qucchia</title>
+    <link href="favicon.ico" rel="icon" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <style>
+      #project-url {
+        width: 280px;
+      }
+      #loading {
+        display: inline;
+      }
+      .hidden {
+        visibility: hidden;
+      }
+      .visible {
+        visibility: visible;
+      }
+      fieldset {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a class="active" href="#">Scratch Project Tools</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+			<h1>Scratch Project Tools</h1>
+      <p>Use this tool to perform tedious tasks quickly for your Scratch projects.</p>
+			<div id="select-project">
+        <label for="project-url">Enter project URL:</label>
+        <input id="project-url" type="text" placeholder="https://scratch.mit.edu/projects/0000000000/" onblur="loadUrl();"/>
+        <label for="file">or upload file:</label>
+        <input id="file" type="file" ondrop="loadFile();"/>
+        <p id="loading" class="hidden">Loading...</p>
+      </div>
+      <br/>
+      <div id="tools" class="hidden">
+        <div id="actions"></div>
+        <label for="action">What would you like to do?</label>
+        <select id="action" onblur="addAction();">
+          <option value="">Select an option...</option>
+          <option value="merge">Merge two or more sprites</option>
+          <option value="separate">Separate a sprite into two or more</option>
+        </select>
+        <br/>
+        <br/>
+        <button>Make edits and download</button>
+      </div>
+    </main>
+    <script src="scratch-project-tools.js"></script>
+  </body>
+</html>

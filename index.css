@@ -41,7 +41,8 @@ nav a:hover:not(.active) {
 	background-color: black;
 }
 main {
-	margin: 50px;
+	margin: 20px;
+	margin-top: 70px;
 }
 h1 {
 	padding-top: 30px;

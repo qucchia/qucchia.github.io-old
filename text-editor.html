@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text Editor - qucchia</title>
+    <link href="favicon.ico" rel="icon" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <style>
+      body {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+      main {
+        height: auto;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        grid-row-gap: 15px;
+      }
+      textarea {
+        width: 100%;
+      }
+      #bottom-bar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="scratch-project-tools.html">Scratch Project Tools</a></li>
+          <li><a class="active" href="text-editor.html">Text Editor</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+			<textarea id="textarea"></textarea>
+      <div id="bottom-bar">
+        <div id="replace">
+          <label for="replace-text">Replace all</label>
+          <input id="replace-text" type="text"/>
+          <label for="replace-for">for:</label>
+          <input id="replace-for" type="text"/>
+          <button onclick="replace();">Replace</button>
+        </div>
+        <div id="upload-download">
+          <input id="load" type="file"/>
+          <button onclick="download();">Download</button>
+        </div>
+      </div>
+    </main>
+    <script src="text-editor.js"></script>
+  </body>
+</html>

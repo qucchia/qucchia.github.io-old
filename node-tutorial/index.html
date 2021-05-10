@@ -2,34 +2,60 @@
 <html>
   <head>
     <title>Node Tutorial - qucchia</title>
-    <link href="../favicon.ico" rel="icon" type="image/x-icon">
+    <link href="/favicon.ico" rel="icon" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link href="../index.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"/>
 		<style>
 			.heading {
 				font-family: 'Lato', sans-serif;
 			}
-			body {
-				grid-template-columns: auto 1fr;
-				grid-template-areas: 
-					"navbar header"
-					"navbar content";
+			h2 {
+				font-weight: bold;
 			}
-			header {
-				grid-area: header;
+			#content {
+				display: flex;
+				flex-direction: row;
+				width: 100%;
+				justify-content: flex-start;
 			}
 			#navbar {
+				background-color: #fffda1;
 				position: fixed;
-				grid-area: navbar;
-				width: 300px;
+				width: 280px;
+				height: 100%;
+				border: 2px solid black;
+			}
+			#navbar header {
+				padding: 20px;
+				padding-top: 30px;
+			}
+			#navbar ul {
+				margin: 0;
+				padding: 0;
+				left: 0;
+				width: 100%;
+				list-style-type: none;
+			}
+			#navbar li {
+				width: 100%;
+				line-height: 1.5;
+				border: 1px solid black;
+			}
+			#navbar li.big {
+				font-size: 24px;
+			}
+			#navbar a {
+				padding-left: 10px;
+				text-decoration: none;
+				color: black;
 			}
 			#main-doc {
-				grid-area: content;
 				position: absolute;
-				margin-left: 310px;
+				margin-left: 280px;
+				margin-top: 40px;
 				padding: 20px;
 				margin-bottom: 110px;
 			}
@@ -39,22 +65,26 @@
     <header>
       <nav id="topnav">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="tools/scratch-project-tools.html">Scratch Project Tools</a></li>
-          <li><a href="tools/text-editor.html">Text Editor</a></li>
-          <li><a href="story.html">Story</a></li>
-          <li><a class="active" href="node-tutorial.html">Node Tutorial</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li>
+            <a href="/tools/scratch-project-tools">Scratch Project Tools</a>
+          </li>
+          <li><a href="/tools/text-editor">Text Editor</a></li>
+          <li><a href="/story">Story</a></li>
+          <li><a class="active" href="/node-tutorial">Node Tutorial</a></li>
         </ul>
       </nav>
     </header>
+		<div id="content">
 		<nav id="navbar">
 			<header><h2 class="heading">Node Tutorial</h2></header>
 			<ul>
-				<li><a href="#Introduction">Introduction</a></li>
+				<li class="big"><a href="#Introduction">Introduction</a></li>
+				<li class="small"><a href="#What_is_NodeJS">What is NodeJS?</a></li>
 			</ul>
 		</nav>
-    <div id="main-doc">
+    <main id="main-doc">
 			<section class="main-section">
 				<header><h2 id="Introduction" class="heading">Introduction</h2></header>
 				<p>In this tutorial I will introduce NodeJS and begin a simple project,
@@ -119,7 +149,8 @@
 				<p>Replace "qucchia" with your own username (between double quotes).</p>
 				<strong>How it works:</strong> like before, we use the <code class="language-js">const</code> keyword to create a new constant called <code class="language-js">Client</code>
 			</section>
-    </div>
+    </main>
+	</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
   </body>
 </html>

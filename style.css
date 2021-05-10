@@ -43,12 +43,12 @@ body {
 main {
 	margin: 20px;
 }
-h1 {
-	font-size: 68px;
-}
-.heading {
+h1, h2, h3, h4, h5, h6 {
 	font-family: 'Arvo', serif;
 	margin-bottom: 0;
+}
+h1 {
+	font-size: 68px;
 }
 h2 {
 	font-size: 35px;

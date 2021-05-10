@@ -9,13 +9,13 @@ function loadFile() {
 
 	let reader = new FileReader();
 	reader.onload = function() {
-			JSZip.loadAsync(reader.result).then(sb3 => {
-				projectSb3 = sb3;
-				sb3.file("project.json").async("string").then(project => {
-					projectJson = JSON.parse(project);
-					console.log(projectJson);
-				})
+		JSZip.loadAsync(reader.result).then(sb3 => {
+			projectSb3 = sb3;
+			sb3.file("project.json").async("string").then(project => {
+				projectJson = JSON.parse(project);
+				console.log(projectJson);
 			});
+		});
 	}
 
 	const target = document.getElementById("file");
@@ -108,8 +108,7 @@ function merge(id) {
 	let sprite2Name = document.getElementById("sprite2-" + id).value;
 	let newSpriteName = document.getElementById("new-sprite-" + id).value;
 	let shift = parseInt(document.getElementById("shift-" + id).value);
-	console.log(id, sprite1Name, sprite2Name, newSpriteName, shift);
-
+	
 	let j = 0;
 	while (projectJson.targets[j].name !== sprite1Name && j < projectJson.targets.length) {
 		j++;
@@ -127,8 +126,7 @@ function merge(id) {
 		alert("Error: Sprite" + sprite2Name + "does not exist.")
 	}
 	let sprite2 = projectJson.targets[j];
-	let sprite2Index = j;
-
+	
 	sprite1.name = newSpriteName;
 	sprite1.variables = {...sprite1.variables, ...sprite2.variables};
 	sprite1.lists = {...sprite1.lists, ...sprite2.lists};

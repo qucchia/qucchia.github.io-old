@@ -12,3 +12,13 @@ function replace() {
 
 	document.getElementById("textarea").value = text;
 }
+
+function download() {
+	let link = document.createElement("a");
+	link.style.display = "none";
+	link.download = "text.txt";
+	console.log(document.getElementById("textarea").innerHTML);
+	link.href = "data:text," + document.getElementById("textarea").value;
+	document.body.appendChild(link);
+	link.click();
+}

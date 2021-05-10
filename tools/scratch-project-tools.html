@@ -55,14 +55,32 @@
       <div id="tools" class="hidden">
         <div id="actions"></div>
         <label for="action">What would you like to do?</label>
-        <select id="action" onblur="addAction();">
+        <select id="action" onchange="addAction();">
           <option value="">Select an option...</option>
-          <option value="merge">Merge two or more sprites</option>
-          <option value="separate">Separate a sprite into two or more</option>
+          <option value="merge">Merge two sprites</option>
+          <!--<option value="separate">Separate a sprite into two or more</option>-->
         </select>
         <br/>
         <br/>
         <button onclick="makeEditsAndDownload();">Make edits and download</button>
+      </div>
+      <div id="action-templates" class="hidden">
+        <fieldset id="merge-template">
+          <legend>Merge sprites together</legend>
+          <label for="sprite1">First sprite name:</label>
+          <input type="text" id="sprite1" placeholder="Sprite1"/>
+          <br/>
+          <label for="sprite2">Second sprite name:</label>
+          <input type="text" id="sprite2" placeholder="Sprite2"/>
+          <br/>
+          <label for="new-sprite">New sprite name:</label>
+          <input type="text" id="new-sprite" placeholder="Sprite1 and Sprite2"/>
+          <br/>
+          <label for="shift">Shift the second sprite's code right by</label>
+          <input id="shift" type="number" min="0" value="1000"/>
+          <label for="shift">pixels</label>
+          <button id="remove-action">Remove this action</button>
+        </fieldset>
       </div>
     </main>
     <script type="text/javascript" src="jszip.min.js"></script>

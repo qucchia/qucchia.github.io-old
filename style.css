@@ -2,29 +2,26 @@ body {
 	margin: 0;
 	font-family: 'Lato', sans-serif;
 	font-size: 18px;
+	width: 100vw;
+	display: grid;
+	grid-template-rows: auto 1fr;
 }
-header {
-	width: 100%;
-	overflow-x: hidden;
-}
-nav {
+#topnav {
 	position: fixed;
 	z-index: 100;
-	width: 100%;
 }
-nav ul {
+#topnav ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	width: 100%;
 	height: 100%;
 	background-color: yellow;
 }
-nav li {
+#topnav li {
 	float: left;
 }
-nav a {
+#topnav a {
 	display: block;
 	padding: 8px;
 	background-color: yellow;
@@ -33,7 +30,7 @@ nav a {
 	padding: 14px 16px;
 	text-decoration: none;
 }
-nav a:hover:not(.active) {
+#topnav a:hover:not(.active) {
 	background-color: #888404;
 }
 .active {
@@ -42,24 +39,22 @@ nav a:hover:not(.active) {
 }
 main {
 	margin: 20px;
-	margin-top: 70px;
 }
 h1 {
-	padding-top: 30px;
 	font-size: 68px;
+}
+.heading {
 	font-family: 'Arvo', serif;
+	margin-bottom: 0;
 }
 h2 {
 	font-size: 35px;
-	font-family: 'Arvo', serif;
 }
 h3 {
-	font-size: 24px;
-	font-family: 'Arvo', serif;
+	font-size: 28px;
 }
 h4 {
 	font-size: 18px;
-	font-family: 'Arvo', serif;
 }
 main img {
 	max-width: 100%;

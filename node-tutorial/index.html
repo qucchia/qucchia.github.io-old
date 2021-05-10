@@ -4,13 +4,40 @@
     <title>Node Tutorial - qucchia</title>
     <link href="../favicon.ico" rel="icon" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="../index.css" rel="stylesheet">
-  </head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"/>
+		<style>
+			.heading {
+				font-family: 'Lato', sans-serif;
+			}
+			body {
+				grid-template-columns: auto 1fr;
+				grid-template-areas: 
+					"navbar header"
+					"navbar content";
+			}
+			header {
+				grid-area: header;
+			}
+			#navbar {
+				position: fixed;
+				grid-area: navbar;
+				width: 300px;
+			}
+			#main-doc {
+				grid-area: content;
+				position: absolute;
+				margin-left: 310px;
+				padding: 20px;
+				margin-bottom: 110px;
+			}
+		</style>
+	</head>
   <body>
     <header>
-      <nav>
+      <nav id="topnav">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="faq.html">FAQ</a></li>
@@ -21,27 +48,32 @@
         </ul>
       </nav>
     </header>
-    <main>
-			<h1>Node Tutorial</h1>
-			<section>
-				<h2>Introduction</h2>
+		<nav id="navbar">
+			<header><h2 class="heading">Node Tutorial</h2></header>
+			<ul>
+				<li><a href="#Introduction">Introduction</a></li>
+			</ul>
+		</nav>
+    <div id="main-doc">
+			<section class="main-section">
+				<header><h2 id="Introduction" class="heading">Introduction</h2></header>
 				<p>In this tutorial I will introduce NodeJS and begin a simple project,
 					connecting to a Scratch project via cloud variables. It's intended for any Scratcher, beginner
 					or expert, and I've tried to make it easy to understand for everyone.</p>
-				<h3>What is NodeJS?</h3>
+				<h3 id="What_is_NodeJS" class="heading">What is NodeJS?</h3>
 				<p>NodeJS is basically an environment for running the programming language JavaScript (that's what the JS stands for).
 					Node is usually used for what is called <strong>backend</strong>, that is, a server that users can communicate
 					with. For our applications, we can use Node to connect our Scratch projects to websites, allow them to store data
 					online, and more. 
 				</p>
-				<h3>What you need to know</h3>
+				<h3 id="What_you_need_to_know" class="heading">What you need to know</h3>
 				<p>For this tutorial all you should know is Scratch and at least a little of how cloud variables work.
 					Knowing JavaScript also helps, but is not necessary.
 				</p>
 			</section>
-			<section>
-				<h2>Getting started</h2>
-				<h3>Creating a repl</h3>
+			<section class="main-section">
+				<header><h2 class="heading">Getting started</h2></header>
+				<h3 class="heading">Creating a repl</h3>
 				<p>It can be a good idea to install NodeJS on your computer and a code editor, but we're just trying it out
 					so we'll use the online environment <a href="https://repl.it" target="_blank">repl.it</a>.
 				</p>
@@ -54,18 +86,40 @@
 					</li>
 					<li>Click <strong>Create repl</strong>.</li>
 				</ol>
-				<h3>Your first program</h3>
+				<h3 class="heading">Your first program</h3>
 				<img src="repl editor.png" alt="Screenshot of repl.it editor"/>
 				<p>This is the repl.it editor. All you need to know for now is that the section in the middle is where you'll
 					write the code, and the black section on the right is where you will get all the output when the program is run.
-				Enter the code <code>console.log("Hello, World!");</code> as shown above and click the <strong>Run</strong> button
-				at the top. You should see at the right (called the console) appear the message <code>Hello, World!</code>
-				<h4>How it works</h4>
-				<p><code>console.log</code> is a JavaScript function (like a block in Scratch). It prints something to the console,
-					and the inputs you give it between the brackets is what is printed. Every command in JavaScript ends in a semicolon.</p>
-				<h3>Setting up the Scratch client</h3>
-				<p><a href="https://github.com/edqx" target="_blank_">edqx</a> has created </p>
-				</section>
-    </main>
+				Enter the code <code class="language-js">console.log("Hello, World!");</code> as shown above and click the <strong>Run</strong> button
+				at the top. You should see at the right (called the console) appear the message <code class="language-js">Hello, World!</code>
+				<strong>How it works:</strong> <code class="language-js">console.log()</code> is a JavaScript function (like a block in Scratch). It prints something to the console,
+					and the inputs you give it between the brackets is what is printed. Every command in JavaScript ends in a semicolon.
+				<h3 class="heading">Setting up the Scratch client</h3>
+				<p><a href="https://github.com/edqx" target="_blank_">edqx</a> has created a module for Node (like an extension for
+				Scratch) that allows us to interact with the Scratch website, for example commenting, following users, and viewing and
+				setting cloud variables. In order to use it, we'll need to put this code: (you can replace the previous code now)</p>
+				<pre><code class="language-js">const scratch = require("node-scratch-client");</code></pre>
+				<p>When you run the repl now, you'll see on the console that repl.it will be installing this module. This only happens once,
+					the first time we run the program.
+				</p>
+				<strong>How it works:</strong> The <code class="language-js">const</code> keyword means we create a constant variable; that is, one that we will never change. We are
+				calling the variable <code class="language-js">scratch</code> (we could give it another name if we wanted to), and we are giving it the value
+				of the node-scratch-client module, which is done using the <code class="language-js">require()</code> function. Don't worry too much if you don't
+				understand everything just yet, you'll get a better understanding as we go along.
+				<p>The next step is to sign in with our account. To do that, we'll need our username and password, but before that, we need to understand something very important.
+					<strong>Repls on repl.it are public.</strong> You must not put sensitive information like passwords in your repls' code, because
+					<strong>anyone could see it</strong>. But don't worry, we have a way of putting information we want to keep private in our repl. You'll see on the left panel is a padlock symbol.
+					Here you can store <strong>secrets</strong>: variables you don't want anyone else to see. We'll create a new secret with the key "PASSWORD" and the value will be our Scratch
+					password. Click <strong>Add secret</strong> to save it. Don't worry, no one else will be able to see it.</p>
+				<p>Now that we've set up our password, we can access it using <code class="language-js">process.env.PASSWORD</code> in our code. This is the code we'll need to log in:</p>
+				<pre><code class="language-js">const Client = new scratch.Client({
+	username: "qucchia",
+	password: process.env.PASSWORD
+});</code></pre>
+				<p>Replace "qucchia" with your own username (between double quotes).</p>
+				<strong>How it works:</strong> like before, we use the <code class="language-js">const</code> keyword to create a new constant called <code class="language-js">Client</code>
+			</section>
+    </div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
   </body>
 </html>

@@ -9,6 +9,7 @@ body {
 #topnav {
 	position: fixed;
 	z-index: 100;
+	width: 100%;
 }
 #topnav ul {
 	list-style-type: none;
@@ -24,11 +25,13 @@ body {
 #topnav a {
 	display: block;
 	padding: 8px;
-	background-color: yellow;
-	color: black;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
+}
+#topnav a:not(.active) {
+	background-color: yellow;
+	color: black;
 }
 #topnav a:hover:not(.active) {
 	background-color: #888404;

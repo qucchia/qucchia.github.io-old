@@ -1,3 +1,15 @@
+const fileSelector = document.getElementById('file-selector');
+fileSelector.addEventListener('change', event => {
+	const file = event.target.files[0];
+	const reader = new FileReader();
+	reader.addEventListener('load', (event) => {
+    let contents = event.target.result;
+		let lines = contents.split("\n");
+		document.getElementById("textarea").value = contents;
+  });
+	reader.readAsText(file);
+});
+
 function replace() {
 	let replaceText = document.getElementById("replace-text").value;
 	let replaceFor = document.getElementById("replace-for").value;

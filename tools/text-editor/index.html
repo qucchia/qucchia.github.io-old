@@ -2,25 +2,31 @@
 <html>
   <head>
     <title>Text Editor - qucchia</title>
-    <link href="../favicon.ico" rel="icon" type="image/x-icon">
+    <link href="/favicon.ico" rel="icon" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link href="../index.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
     <style>
       body {
         height: 100vh;
-        display: grid;
-        grid-template-rows: auto 1fr;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      #topnav {
+        position: static;
       }
       main {
-        height: auto;
-        display: grid;
-        grid-template-rows: 1fr auto;
-        grid-row-gap: 15px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
       }
       textarea {
         width: 100%;
+        height: 100%;
+        margin-bottom: 15px;
       }
       #bottom-bar {
         width: 100%;
@@ -28,35 +34,49 @@
         flex-direction: row;
         justify-content: space-between;
       }
+      .bottom-bar-item {
+        padding: 0 1em 0 1em;
+      }
+      @media (max-width: 650px) {
+        #bottom-bar {
+          flex-direction: column;
+        }
+        .bottom-bar-item {
+          padding: 1em 0 1em 0;
+        }
+      }
     </style>
   </head>
   <body>
     <header>
-      <nav>
+      <nav id="topnav">
         <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../faq.html">FAQ</a></li>
-          <li><a href="scratch-project-tools.html">Scratch Project Tools</a></li>
-          <li><a class="active" href="text-editor.html">Text Editor</a></li>
-          <li><a href="../story.html">Story</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li>
+            <a href="tools/scratch-project-tools">Scratch Project Tools</a>
+          </li>
+          <li><a class="active" ref="/tools/text-editor">Text Editor</a></li>
+          <li><a href="/story">Story</a></li>
         </ul>
+      </nav>
       </nav>
     </header>
     <main>
       <textarea id="textarea"></textarea>
       <div id="bottom-bar">
-        <div id="replace">
-          <label for="replace-text">Replace all</label>
+        <div class="bottom-bar-item" id="replace">
+          <label for="replace-text">Replace:</label>
           <input id="replace-text" type="text"/>
+          <br/>
           <label for="replace-for">for:</label>
           <input id="replace-for" type="text"/>
           <button onclick="replace();">Replace</button>
         </div>
         <div>
-          <input id="load" type="file"/>
-          <button onclick="load();">Load</button>
+          <input class="bottom-bar-item" id="file-selector" type="file" accept=".txt"/>
         </div>
-        <button onclick="download();">Download</button>
+        <button class="bottom-bar-item" onclick="download();">Download</button>
       </div>
     </main>
     <script src="text-editor.js"></script>

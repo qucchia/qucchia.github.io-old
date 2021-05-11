@@ -5,88 +5,59 @@
     <link href="/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Montserrat:wght@300&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link href="/style.css" rel="stylesheet" />
-    <style>
-      header {
-        background-color: #888404;
-        width: 100%;
-        height: 100vh;
-        position: relative;
-        overflow-x: hidden;
-      }
-      header h1 {
-        position: absolute;
-        z-index: 2;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 88px;
-        color: white;
-      }
-      header img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        min-width: 100%;
-        height: 100vh;
-        filter: brightness(50%);
-      }
-      main img {
-        height: 200px;
-      }
-    </style>
+    <link href="/index.css" rel="stylesheet" />
   </head>
   <body>
-    <header>
-      <nav id="topnav">
-        <ul>
-          <li><a class="active" href="/">Home</a></li>
-          <li><a href="/faq">FAQ</a></li>
-          <li>
-            <a href="/tools/scratch-project-tools">Scratch Project Tools</a>
-          </li>
-          <li><a href="/tools/text-editor">Text Editor</a></li>
-          <li><a href="/story">Story</a></li>
-        </ul>
-      </nav>
-      <h1>qucchia</h1>
+    <nav id="topnav">
+      <ul>
+        <li><a href="#welcome-section">Welcome</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#more-info">Info</a></li>
+      </ul>
+    </nav>
+    <section id="welcome-section">
+      <header>
+        <h1>Hi, I'm qucchia.</h1>
+        <p style="font-size: 35px; opacity: 0.7">
+          A chess-playing monkey developer
+        </p>
+      </header>
       <img src="silhouettes.png" alt="" />
-    </header>
-    <main>
-      <h2>Hi, I'm qucchia.</h2>
-      <p>
-        I'm a guy who happens to also be a coding and chess playing monkey (you
-        can guess which one's which in the banner above). I'm mostly known for my questionable
-        projects on <a href="scratch.mit.edu/users/qucchia" target="_blank">Scratch</a>,
-        but I've moved on since then.
-        <br />
-        My human counterpart is British, living in Spain, 15 years old. I'm looking into getting programming
-        experience in my free time for my future.
-      </p>
-      <img src="monkey_programming.jpg" alt="Monkey programming" />
-      <h2>Projects</h2>
-      <p>
-        You're seeing my current project right now: a website. This will be a
-        helpful exercise to enforce what I've learned in HTML, CSS and JS.
-      </p>
-      <p>On this website I'm working on:</p>
-        <ul>
-          <li>A clean website layout and style</li>
-          <li>A tool for manipulating Scratch projects easily</li>
-          <li>A tutorial for Node.JS in connection to Scratch</li>
-          <li>Just going through the courses at <a href="https://freecodecamp.org" target="_blank">
-            freeCodeCamp.org</a></li>
-        </ul>
-        <h2>Source code</h2>
-        <p>You can view the source code of this website on <a href="https://github.com/qucchia/qucchia.github.io" target="_blank">github</a>.</p>
-    </main>
+    </section>
+    <section id="projects">
+      <header><h2>Here are some of my projects:</h2></header>
+      <article>
+        <a href="/tools/scratch-project-tools">
+          <header class="project-title"><h3>Scratch Project Tools</h3></header>
+          <img src="" alt="" />
+        </a>
+        <a href="/tools/text-editor">
+          <header class="project-title"><h3>Online Text Editor</h3></header>
+          <img src="" alt="" />
+        </a>
+        <a href="https://lichess.org/study/1L7JFCmR" target="_blank">
+          <header class="project-title"><h3>Types of Chess Forks</h3></header>
+          <img src="fork study.png" alt="" />
+        </a>
+      </article>
+    </section>
+    <section id="more-info">
+      <header><h2>More information</h2></header>
+      <a href="/faq">
+        <span style="margin: 15px" class="material-icons">quiz</span>
+        <p>Frequently asked questions</p>
+      </a>
+      <a href="mailto:qucchia0@gmail.com" target="_blank">
+        <span style="margin: 15px" class="material-icons">email</span>
+        <p>Send me an e-mail</p>
+      </a>
+    </section>
   </body>
 </html>

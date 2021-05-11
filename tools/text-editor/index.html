@@ -2,11 +2,13 @@
 <html>
   <head>
     <title>Text Editor - qucchia</title>
-    <link href="/favicon.ico" rel="icon" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link href="/style.css" rel="stylesheet">
+    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Montserrat:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/style.css" rel="stylesheet" />
     <style>
       body {
         height: 100vh;
@@ -50,15 +52,10 @@
   <body>
     <header>
       <nav id="topnav">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/faq">FAQ</a></li>
-          <li>
-            <a href="/tools/scratch-project-tools">Scratch Project Tools</a>
-          </li>
-          <li><a class="active" href="/tools/text-editor">Text Editor</a></li>
-          <li><a href="/story">Story</a></li>
-        </ul>
+        <a href="/">
+          <img src="/qucchia silhouette.png" />
+          <p>qucchia</p>
+        </a>
       </nav>
     </header>
     <main>
@@ -66,14 +63,19 @@
       <div id="bottom-bar">
         <div class="bottom-bar-item" id="replace">
           <label for="replace-text">Replace:</label>
-          <input id="replace-text" type="text"/>
-          <br/>
+          <input id="replace-text" type="text" />
+          <br />
           <label for="replace-for">for:</label>
-          <input id="replace-for" type="text"/>
+          <input id="replace-for" type="text" />
           <button onclick="replace();">Replace</button>
         </div>
         <div>
-          <input class="bottom-bar-item" id="file-selector" type="file" accept=".txt"/>
+          <input
+            class="bottom-bar-item"
+            id="file-selector"
+            type="file"
+            accept=".txt"
+          />
         </div>
         <button class="bottom-bar-item" onclick="download();">Download</button>
       </div>

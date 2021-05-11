@@ -2,11 +2,13 @@
 <html>
   <head>
     <title>Scratch Project Tools - qucchia</title>
-    <link href="/favicon.ico" rel="icon" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <link href="/style.css" rel="stylesheet">
+    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Montserrat:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/style.css" rel="stylesheet" />
     <style>
       #project-url {
         width: 280px;
@@ -28,31 +30,29 @@
   <body>
     <header>
       <nav id="topnav">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/faq">FAQ</a></li>
-          <li>
-            <a class="active" href="/tools/scratch-project-tools">Scratch Project Tools</a>
-          </li>
-          <li><a href="/tools/text-editor">Text Editor</a></li>
-          <li><a href="/story">Story</a></li>
-        </ul>
+        <a href="/">
+          <img src="/qucchia silhouette.png" />
+          <p>qucchia</p>
+        </a>
       </nav>
     </header>
     <main>
-			<h1>Scratch Project Tools</h1>
-      <p>Use this tool to perform tedious tasks quickly for your Scratch projects.</p>
-			<div id="select-project">
+      <h1>Scratch Project Tools</h1>
+      <p>
+        Use this tool to perform tedious tasks quickly for your Scratch
+        projects.
+      </p>
+      <div id="select-project">
         <!--
         <label for="project-url">Enter project URL:</label>
         <input id="project-url" type="text" placeholder="https://scratch.mit.edu/projects/0000000000/" onblur="loadUrl();"/>
         -->
         <label for="file"><!--or upload file: -->Upload file:</label>
-        <input id="file" type="file" accept=".sb3" ondrop="loadFile();"/>
+        <input id="file" type="file" accept=".sb3" ondrop="loadFile();" />
         <button onclick="loadFile();">Load file</button>
         <p id="loading" class="hidden">Loading...</p>
       </div>
-      <br/>
+      <br />
       <div id="tools" class="hidden">
         <div id="actions"></div>
         <label for="action">What would you like to do?</label>
@@ -61,24 +61,30 @@
           <option value="merge">Merge two sprites</option>
           <!--<option value="separate">Separate a sprite into two or more</option>-->
         </select>
-        <br/>
-        <br/>
-        <button onclick="makeEditsAndDownload();">Make edits and download</button>
+        <br />
+        <br />
+        <button onclick="makeEditsAndDownload();">
+          Make edits and download
+        </button>
       </div>
       <div id="action-templates" class="hidden">
         <fieldset id="merge-template">
           <legend>Merge sprites together</legend>
           <label for="sprite1">First sprite name:</label>
-          <input type="text" id="sprite1" placeholder="Sprite1"/>
-          <br/>
+          <input type="text" id="sprite1" placeholder="Sprite1" />
+          <br />
           <label for="sprite2">Second sprite name:</label>
-          <input type="text" id="sprite2" placeholder="Sprite2"/>
-          <br/>
+          <input type="text" id="sprite2" placeholder="Sprite2" />
+          <br />
           <label for="new-sprite">New sprite name:</label>
-          <input type="text" id="new-sprite" placeholder="Sprite1 and Sprite2"/>
-          <br/>
+          <input
+            type="text"
+            id="new-sprite"
+            placeholder="Sprite1 and Sprite2"
+          />
+          <br />
           <label for="shift">Shift the second sprite's code right by</label>
-          <input id="shift" type="number" min="0" value="1000"/>
+          <input id="shift" type="number" min="0" value="1000" />
           <label for="shift">pixels</label>
           <button id="remove-action">Remove this action</button>
         </fieldset>

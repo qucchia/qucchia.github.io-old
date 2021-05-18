@@ -1,8 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="qucchia's official work-in-progress website, with tools and projects."
+    />
     <title>qucchia</title>
-    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Apple Web App Meta -->
+    <link rel="apple-touch-icon" href="/icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Montserrat:wght@300&display=swap"
@@ -18,8 +37,7 @@
     <nav id="topnav">
       <ul>
         <li><a href="#welcome-section">Welcome</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#more">More</a></li>
+        <li><a href="#pages">Pages</a></li>
       </ul>
     </nav>
     <section id="welcome-section">
@@ -29,27 +47,11 @@
           a chess-playing monkey developer.
         </p>
       </header>
-      <img src="silhouettes.png" alt="" />
+      <img src="images/silhouettes.png" alt="" />
     </section>
-    <section id="projects">
-      <header><h2>Here are some of my projects:</h2></header>
-      <article>
-        <a href="/tools/scratch-project-tools">
-          <header class="project-title"><h3>Scratch Project Tools</h3></header>
-          <img src="" alt="" />
-        </a>
-        <a href="/tools/text-editor">
-          <header class="project-title"><h3>Online Text Editor</h3></header>
-          <img src="" alt="" />
-        </a>
-        <a href="https://lichess.org/study/1L7JFCmR" target="_blank">
-          <header class="project-title"><h3>Types of Chess Forks</h3></header>
-          <img src="fork study.png" alt="" />
-        </a>
-      </article>
     </section>
-    <section id="more">
-      <header><h2>More Pages</h2></header>
+    <section id="pages">
+      <header><h2>Pages</h2></header>
       <a href="/faq">
         <span style="margin: 15px" class="material-icons">quiz</span>
         <p>Frequently asked questions</p>
@@ -57,10 +59,6 @@
       <a href="/story/">
         <span style="margin: 15px" class="material-icons">auto_stories</span>
         <p>A short story I wrote</p>
-      </a>
-      <h3>Work in progress</h3>
-      <a href="/node-tutorial/">
-        <p>Node tutorial</p>
       </a>
     </section>
   </body>

@@ -1,6 +1,6 @@
 /* Colour palette:
  * Yellow: #f2fd52 #cfde02 #848d01
- * Purple: #7D84B2 #48435c
+ * Purple: #7d84b2 #48435c
  */
 body {
   margin: 0;
@@ -10,7 +10,7 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 main {
-  margin: 20px;
+  margin: 50px 100px 50px 100px;
 }
 h1,
 h2,
@@ -20,6 +20,7 @@ h5,
 h6 {
   margin-bottom: 0;
   font-family: "Lexend", sans-serif;
+  color: #48435c;
 }
 h1 {
   font-size: 68px;
@@ -33,6 +34,13 @@ h3 {
 h4 {
   font-size: 18px;
 }
+a {
+  color: #7d84b2;
+  text-decoration: none;
+}
+a:hover {
+  color: #48435c;
+}
 
 #topnav {
   position: fixed;
@@ -41,7 +49,7 @@ h4 {
   height: 50px;
   margin: 0;
   padding: 0;
-  background-color: #fff933;
+  background-color: #f2fd52;
 }
 #topnav a {
   display: flex;

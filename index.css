@@ -85,16 +85,37 @@ a {
   filter: brightness(50%);
 }
 
-#pages {
+#posts {
+  padding: 30px;
+  height: 100vh;
+  background-color: #48435c;
+}
+#posts h2 {
+  color: #cfde02;
+}
+#posts a {
+  color: #f2fd52;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#posts a:hover {
+  color: #cfde02;
+}
+
+#more {
   padding: 30px;
   height: 100vh;
 }
-#pages h2 {
+#more h2 {
   color: #48435c;
 }
-#pages a {
+#more a {
   color: #7d84b2;
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+#more a:hover {
+  color: #48435c;
 }

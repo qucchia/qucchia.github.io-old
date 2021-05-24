@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="qucchia's official work-in-progress website, with tools and projects."
+    />
+    <title>The Non-Repeating Series | qucchia</title>
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+    <!-- Apple Web App Meta -->
+    <link rel="apple-touch-icon" href="/images/small.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&family=Montserrat:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="/style.css" rel="stylesheet" />
+
+    <style>
+      #the-python-program article {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-gap: 32px;
+      }
+
+      @media (max-width: 500px) {
+        #the-python-program article {
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr auto;
+        }
+
+        .gist {
+          max-width: 400px !important;
+        }
+      }
+
+      td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="article">
+      <header>
+        <h1>The Non-Repeating Series</h1>
+      </header>
+      <p class="secondary"><em>Published 24th May 2021</em></p>
+      <section id="introduction">
+        <header>
+          <h2>Introduction</h2>
+        </header>
+        <article>
+          <p>
+            In this blog post I'm going to explore some interesting bits of
+            mathematics related to series of numbers. The question we begin with
+            today is:
+            <strong>How long can a series be without repeating?</strong> For
+            example, if we choose the numbers 1 to 10, how long can we make a
+            series of only those numbers without the series repeating once?
+            Before we begin, let me explain what I mean by <em>repeat</em> in
+            this case.
+          </p>
+          <p>
+            For this article, a series <strong>repeats</strong> when the same
+            number or sequence of numbers appears twice in a row. Here are some
+            examples to explain myself better:
+          </p>
+          <ul>
+            <li>
+              <em>1 2 5 3 <u>7</u> <u>7</u> 6 3</em> is repeating because the
+              number 7 appears twice in a row.
+            </li>
+            <li>
+              <em>2 3 <u>9 6 5</u> <u>9 6 5</u> 4</em> is also repeating because
+              the sequence 9 6 5 repeats twice in a row.
+            </li>
+            <li>
+              Even though the sequence 3 4 9 appears twice in the series
+              <em>2 3 4 9 6 3 4 9</em>, it's not repeating because they don't
+              appear one right after the other. However, if we added a 6 to the
+              end of this series, it would be repeating because of the sequence
+              3 4 9 6.
+            </li>
+          </ul>
+          <p>
+            So, the purpose of this post is to explore how long a series can be
+            using a limited amount of numbers (like 1 to 10), without it
+            repeating. I'll be calling such series
+            <strong>non-repeating series</strong> from now on.
+          </p>
+        </article>
+      </section>
+      <section id="lets-start-simple">
+        <header>
+          <h2>Let's start simple</h2>
+        </header>
+        <article>
+          <p>
+            Before we complicate ourselves looking how long we can make
+            non-repeating series using 10 numbers, let’s start simple and begin
+            at the beginning. The simplest case is if we only allow ourselves
+            the number 1: unsurprisingly, the longest series that doesn’t repeat
+            with just one number, is, 1.
+          </p>
+          <p>
+            For two numbers, the longest we can get is three long: either 1 2 1
+            or 2 1 2 (which are basically the same, only swapping 1 and 2
+            round). Here we get stuck because whatever number we add next will
+            result in a repeating series (<em>1 2 <u>1</u> <u>1</u></em
+            >, <em><u>1 2</u> <u>1 2</u></em
+            >).
+          </p>
+          <p>
+            Next in the list, we’ve got series with three numbers. I began
+            writing one down on my notebook and it started getting quite longer
+            than I had first expected. A lot of the process involved me doing
+            guess work, and I easily managed to reach a sequence of 40 numbers
+            without repeating. It looked something like this:
+            <em>
+              1 2 1 3 2 1 2 3 2 1 3 2 3 1 2 3 2 1 2 3 1 2 1 3 1 2 3 1 3 2 3 1 2
+              1 3 1 2 3 2 1…
+            </em>
+          </p>
+          <p>
+            At this moment I decided to stop doing it by hand and try let the
+            computer calculate for me.
+          </p>
+        </article>
+      </section>
+      <section id="the-python-program">
+        <header>
+          <h2>The Python Program</h2>
+        </header>
+        <article>
+          <div>
+            <p>
+              Here’s the Python code I wrote to find these series. The
+              <code>numbers</code>
+              list keeps track of our series. What it does is keep adding new
+              numbers to the end of the series, and if it is repeating, it’ll
+              try another number instead. Because we only add numbers to the
+              end, we only need to check if the series is repeating at the end
+              every time, and this saves the program time.
+            </p>
+            <p>
+              We keep checking whether the series repeats, and if it does, we
+              increase the last number using the
+              <code>increase()</code> function. This function will also remove
+              the last number if it has gone through all possible options.
+            </p>
+            <p>
+              We use a <code>longest</code> variable to keep the longest series
+              of numbers found so far. Every so often we print how many we’ve
+              found to show the program's working. Finally, when it goes through
+              all the series or we stop the program with Ctrl+C, the program
+              will print the series for us.
+            </p>
+            <p>
+              And so I tried it out. In just a few seconds the program had
+              already found a series of 1000 numbers that didn’t repeat! I was
+              amazed to say the least. And only using the numbers 1, 2 and 3!
+              Forget series of 10 numbers! Anyway, I left it for a few minutes
+              and it was still going, with 13000 and over. At this point, I
+              wondered if it was even possible for this series to go on forever.
+            </p>
+          </div>
+          <script
+            class="code"
+            src="https://gist.github.com/qucchia/d36f804837f7310cef19bcd4d18fa30d.js"
+          ></script>
+        </article>
+      </section>
+      <section id="could-it-be-infinite">
+        <header>
+          <h2>Could it be infinite?</h2>
+        </header>
+        <article>
+          <p>
+            Let’s try to figure out if such a series can really be infinite. But
+            before we do that for a series with three numbers, we should start
+            from the opposite end, that is, with infinitely many numbers. Here
+            it’s evident that we can make an infinitely long series without
+            repeating, we could do <em>1 2 3 4 5</em> and so on forever. After
+            that, we can try a really big finite number like a googol. Surely an
+            infinite non-repeating series can be made with a googol numbers? But
+            it’s actually a lot trickier to prove than I expected. So before we
+            try any further, let’s look take a different approach to the
+            problem.
+          </p>
+        </article>
+      </section>
+      <section id="transforming-non-repeating-series">
+        <header>
+          <h2>Transforming non-repeating series</h2>
+        </header>
+        <article>
+          <p>
+            Here I will show you a way of transforming any series using the
+            numbers 1 to 6 that doesn’t repeat, to a series using only 4 numbers
+            that is guaranteed not to repeat either. For this example we'll use
+            the series <em>3 5 2 4 3 1 6</em>. Here’s a table of numbers: we’ll
+            turn every number in the series into the corresponding sequence of
+            numbers.
+          </p>
+          <table>
+            <tr>
+              <th>Nº</th>
+              <th>Sequence</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>123</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>132</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>213</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>231</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>312</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>321</td>
+            </tr>
+          </table>
+          <p>
+            So the first 3 will turn into the sequence 2 1 3. And doing this
+            with all the numbers we get
+            <em>2 1 3 + 3 1 2 + 1 3 2 + 2 3 1 + 2 1 3 + 1 2 3 + 3 2 1</em>.
+            Then, we put a 4 between every sequence to get
+            <em
+              >2 1 3 <strong>4</strong> 3 1 2 <strong>4</strong> 1 3 2
+              <strong>4</strong> 2 3 1 <strong>4</strong> 2 1 3
+              <strong>4</strong> 1 2 3 <strong>4</strong> 3 2 1</em
+            >. It can be proved that whatever series of 6 numbers we start with,
+            as long as it’s non-repeating, will result in a series of 4 numbers
+            that is also non-repeating. Can you figure out why?
+          </p>
+          <p>
+            This means that if there is an infinite non-repeating series with 6
+            numbers, there will also be one with 4 numbers. In fact, this isn’t
+            unique to just 4 and 6. We just need to assign every number of a
+            series to a sequence of other numbers, and put the same number
+            between each sequence to create a new series. For example, we can
+            transform a series of 120 numbers to one with 6, because there are
+            at least 120 sequences using 6 numbers we can make; then working
+            backwards we can transform a series of like a googol numbers to one
+            with 120, and so on, essentially reaching an infinitely big number.
+            This is the beginning of our proof.
+          </p>
+          <header>
+            <h3>Transforming from 4 to 3</h3>
+          </header>
+          <p>
+            If we try finding a way of transforming a series of 4 numbers to one
+            with 3, it’s slightly more complicated. Here’s a method that doesn’t
+            work: even though we assign every number to a sequence of 1s and 2s
+            and put a 3 between every one, the final result repeats.
+          </p>
+          <table>
+            <tr>
+              <th>Nº</th>
+              <th>Sequence</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>21</td>
+            </tr>
+          </table>
+          <p>Process:</p>
+
+          <ul>
+            <li>3 1 4 3 2 1 3</li>
+            <li>1 2 + 1 + 2 1 + 1 2 + 2 + 1 + 1 2</li>
+            <li>
+              1 2 <strong>3</strong> 1 <strong>3</strong> 2 1
+              <strong>3</strong> 1 2 <strong>3</strong> 2
+              <u><strong>3</strong> 1 <strong>3</strong> 1</u> 2
+            </li>
+          </ul>
+          <p>
+            The sequence <em>1</em> is contained in the sequence
+            <em>1 2</em> and this is what allows the repeat. However, there
+            actually is a way of doing it that I found, and it’s this: instead
+            of putting <em>3</em> between every sequence, we put
+            <em><strong>1 2 3</strong></em
+            >, and the sequences are different. But they ensure there are no
+            repetitions in the final sequence if the starting one isn’t either.
+          </p>
+          <table>
+            <tr>
+              <th>Nº</th>
+              <th>Sequence</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>213</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>1213</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>1323</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>13213</td>
+            </tr>
+          </table>
+          <p>Process:</p>
+
+          <ul>
+            <li>3 1 4 3 2 3 1</li>
+            <li>
+              1 3 2 3 + 2 1 3 + 1 3 2 1 3 + 1 3 2 3 + 1 2 1 3 + 1 3 2 3 + 2 1 3
+            </li>
+            <li>
+              1 3 2 3 <strong>1 2 3</strong> 2 1 3 <strong>1 2 3</strong> 1 3 2
+              1 3 <strong>1 2 3</strong> 1 3 2 3 <strong>1 2 3</strong> 1 2 1 3
+              <strong>1 2 3</strong> 1 3 2 3 <strong>1 2 3</strong> 2 1 3
+            </li>
+          </ul>
+          <p>
+            It may seem a little messy, but it works, which is great.
+            <br />
+            Now that we’ve got this out of way, let’s finally do some proving.
+          </p>
+        </article>
+      </section>
+      <section id="approaching-infinity">
+        <header>
+          <h2>Approaching infinity</h2>
+        </header>
+        <article>
+          <p>
+            Let’s start with a very large number, let’s say a googol plex (it
+            doesn’t really matter though). We know that we can transform any
+            non-repeating series with a googol plex numbers into one with less
+            numbers, and one with even less, and so on, until we reach the
+            smallest possible, which is 3. After every step, the resulting
+            series gets longer and longer, and so, if we begin again with an
+            even bigger number, we know the resulting one will also be bigger.
+            Now if we imagine continuing to do this process again and again with
+            bigger and bigger numbers forever, all our series will also get
+            bigger and bigger forever. That’s basically it! Because we can keep
+            going without stopping, the series we make will also keep growing
+            forever without limits. That’s the proof that we can make an
+            infinite non-repeating series with 3 or more numbers.
+          </p>
+        </article>
+      </section>
+      <section id="conclusion">
+        <header>
+          <h2>Conclusion</h2>
+        </header>
+        <article>
+          <p>
+            That one day I was bored, playing around with different series of
+            numbers, I never imagined it would bring me to discover that a
+            series using only 3 numbers can go on forever without repeating (the
+            way I defined it). It's been fun, and I hope you've found it
+            interesting too. I hope to make more blog posts like this soon.
+          </p>
+        </article>
+      </section>
+    </main>
+    <script src="/nav-build.js" type="text/javascript"></script>
+  </body>
+</html>
